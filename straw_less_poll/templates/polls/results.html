@@ -1,0 +1,27 @@
+<!-- Results Page. -->
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <!--  Display question and then list each choice with the amount of votes.  -->
+    <h1 class="text-center mb-5">
+            {{ question.question_text }}
+    </h1>
+    <ul class="list-group mb-5">
+        {% for choice in question.choice_set.all %}
+            <li class="list-group-item">
+                {{ choice.choice_text }}
+                <span class="badge badge-success float-right">
+                    {{ choice.votes }}
+                    vote{{ choice.votes | pluralize }} <!-- A helper function to pluralize word "vote" if > 1 vote. -->
+                </span>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <!-- Back to Polls button and a Vote Again button. -->
+    <a href="{% url 'polls:index' %}" class="btn btn-secondary">Back To Polls</a>
+    <a href="{% url 'polls:detail' question.id %}" class="btn btn-dark">Vote again?</a>
+
+{% endblock %}
+

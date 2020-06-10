@@ -1,10 +1,14 @@
+<!-- Page that shows all Poll Questions. -->
 {% extends 'base.html' %}
 
 {% block content %}
+
     <h1 class="text-center mb-3">
         Poll Questions
     </h1>
+
     {% if curr_question_list %}
+        <!--  Loop through each question and display the Question and a Vote Now button and Results button.  -->
         {% for question in curr_question_list %}
             <div class="card mb-3">
                 <div class="card-body">
@@ -19,4 +23,5 @@
     {% else %}
         <p>Currently no polls available.</p>
     {% endif %}
+
 {% endblock %}

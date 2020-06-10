@@ -21,4 +21,5 @@ class QuestionAdmin(admin.ModelAdmin):
     inlines = [ChoiceInline]
 
 
+# Now allow admin to register a Question with this new modified Question model.
 admin.site.register(Question, QuestionAdmin)
